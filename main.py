@@ -5,6 +5,7 @@ C_YELLOW = '\033[93m'
 C_RED = '\033[91m'
 C_MAGENTA = '\033[95m'
 C_BOLD = '\033[1m'
+#Ciktiyi renklendirebilmek icin yapay zekadan yardim alinmistir (renk kodlari)
 
 class Kitap:
     kutuphane_envanteri = []
@@ -17,7 +18,7 @@ class Kitap:
 
     def kitap_ekle(self):
         Kitap.kutuphane_envanteri.append(self)
-        print(f"{C_GREEN}{C_BOLD}✓ Kitap başarıyla eklendi.{C_RESET}")
+        print(f"{C_GREEN}{C_BOLD}✓ Kitap eklendi.{C_RESET}")
 
 
 class BasiliKitap(Kitap):
@@ -79,12 +80,12 @@ while True:
     elif secim == '2':
         print(f"\n{C_MAGENTA}{C_BOLD}--- KİTAP LİSTESİ ---{C_RESET}")
         for kitap in Kitap.kutuphane_envanteri:
-            print(f"📖 {C_BOLD}{kitap.isim}{C_RESET} | Yazar: {kitap.yazar} | Tür: {kitap.tur}")
+            print(f" {C_BOLD}{kitap.isim}{C_RESET} | Yazar: {kitap.yazar} | Tür: {kitap.tur}")
 
 
     elif secim == '3':
 
-        aranan = input(f"{C_YELLOW}Ödünç almak istediğiniz kitabın adı: {C_RESET}")
+        aranan = input(f"{C_YELLOW}Ödünç almak istenilen kitabın adı: {C_RESET}")
 
         bulundu = False
 
@@ -101,7 +102,7 @@ while True:
                 elif isinstance(kitap, EKitap):
 
                     print(
-                        f"{C_CYAN} '{kitap.isim}' bir e-kitaptır. Sistemden okuyabilirsiniz.{C_RESET}")
+                        f"{C_CYAN} '{kitap.isim}' bir e-kitaptır. Ödünç alma işlemi gerektirmez.{C_RESET}")
 
                 break
 
@@ -111,7 +112,7 @@ while True:
 
     elif secim == '4':
 
-        aranan = input(f"{C_YELLOW}İade etmek istediğiniz kitabın adı: {C_RESET}")
+        aranan = input(f"{C_YELLOW}İade etmek istenilen kitabın adı: {C_RESET}")
 
         bulundu = False
 
@@ -139,4 +140,4 @@ while True:
         break
 
     else:
-        print(f"{C_RED}✗ Geçersiz seçim. Lütfen tekrar deneyin.{C_RESET}")
+        print(f"{C_RED}✗ Geçersiz seçim. Lütfen tekrar seçim yapın.{C_RESET}")
