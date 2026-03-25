@@ -81,25 +81,56 @@ while True:
         for kitap in Kitap.kutuphane_envanteri:
             print(f"📖 {C_BOLD}{kitap.isim}{C_RESET} | Yazar: {kitap.yazar} | Tür: {kitap.tur}")
 
+
     elif secim == '3':
+
         aranan = input(f"{C_YELLOW}Ödünç almak istediğiniz kitabın adı: {C_RESET}")
+
         bulundu = False
+
         for kitap in Kitap.kutuphane_envanteri:
-            if kitap.isim == aranan and isinstance(kitap, BasiliKitap):
-                kitap.odunc_al()
+
+            if kitap.isim == aranan:
+
                 bulundu = True
+
+                if isinstance(kitap, BasiliKitap):
+
+                    kitap.odunc_al()
+
+                elif isinstance(kitap, EKitap):
+
+                    print(
+                        f"{C_CYAN} '{kitap.isim}' bir e-kitaptır. Sistemden okuyabilirsiniz.{C_RESET}")
+
                 break
+
         if not bulundu:
             print(f"{C_RED}✗ Kitap bulunamadı.{C_RESET}")
 
+
     elif secim == '4':
+
         aranan = input(f"{C_YELLOW}İade etmek istediğiniz kitabın adı: {C_RESET}")
+
         bulundu = False
+
         for kitap in Kitap.kutuphane_envanteri:
-            if kitap.isim == aranan and isinstance(kitap, BasiliKitap):
-                kitap.iade_et()
+
+            if kitap.isim == aranan:
+
                 bulundu = True
+
+                if isinstance(kitap, BasiliKitap):
+
+                    kitap.iade_et()
+
+                elif isinstance(kitap, EKitap):
+
+                    print(f"{C_CYAN} '{kitap.isim}' bir e-kitaptır. İade gerektirmez.{C_RESET}")
+
                 break
+
         if not bulundu:
             print(f"{C_RED}✗ Kitap bulunamadı.{C_RESET}")
 
